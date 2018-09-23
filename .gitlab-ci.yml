@@ -1,0 +1,19 @@
+stages:
+- build
+- test
+- deploy
+
+
+build_maven:
+  stage: build
+  script:
+  - echo "开始构建。。。。。"
+test_springboot:
+  stage: test
+  script:
+  - echo "开始测试。。。。。"
+
+deploy_springboot:
+  stage: deploy
+  script:
+  - echo "开始部署。。。。。"
