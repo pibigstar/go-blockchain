@@ -15,6 +15,12 @@ func main() {
 		fmt.Printf("Hash:%x\n", block.Hash)
 		fmt.Printf("Data:%s\n", block.Data)
 		fmt.Printf("PrevHash:%x\n", block.PrevBlockHash)
+
+		// 验证
+		pow := core.NewProofOfWork(block)
+		fmt.Println("POW:", pow.Validate())
+
+		fmt.Printf("\n\n")
 	}
 
 }
