@@ -3,14 +3,15 @@ package core
 import (
 	"bytes"
 	"crypto/sha256"
+	"fmt"
 	"math"
 	"math/big"
-	"fmt"
 )
 
 var (
 	maxNonce = math.MaxInt64
 )
+
 // 困难度，数越大越困难
 const targetBits = 8
 
@@ -18,6 +19,7 @@ type ProofOfWork struct {
 	block  *Block
 	target *big.Int
 }
+
 // 创建一个新的工作量证明
 func NewProofOfWork(block *Block) *ProofOfWork {
 	target := big.NewInt(1)
@@ -26,6 +28,7 @@ func NewProofOfWork(block *Block) *ProofOfWork {
 	pow := &ProofOfWork{block, target}
 	return pow
 }
+
 // 准备数据
 func (pow *ProofOfWork) prepareData(nonce int) []byte {
 	data := bytes.Join([][]byte{
@@ -37,6 +40,7 @@ func (pow *ProofOfWork) prepareData(nonce int) []byte {
 	}, []byte{})
 	return data
 }
+
 // 挖矿
 func (pow *ProofOfWork) Run() (int, []byte) {
 	var hashInt big.Int
@@ -45,19 +49,19 @@ func (pow *ProofOfWork) Run() (int, []byte) {
 	for nonce < maxNonce {
 		data := pow.prepareData(nonce)
 		hash = sha256.Sum256(data)
-		fmt.Printf("\r%x",hash)
+		fmt.Printf("\r%x", hash)
 		hashInt.SetBytes(hash[:])
 		if hashInt.Cmp(pow.target) == -1 {
 			break
-		}else {
+		} else {
 			nonce++
 		}
 	}
-	return nonce,hash[:]
+	return nonce, hash[:]
 }
 
 // 验证
-func (pow *ProofOfWork)Validate() bool {
+func (pow *ProofOfWork) Validate() bool {
 	var hashInt big.Int
 	data := pow.prepareData(pow.block.Nonce)
 	hash := sha256.Sum256(data)
