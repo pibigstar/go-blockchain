@@ -5,7 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/gob"
 	"log"
-		"time"
+	"time"
 )
 
 type Block struct {

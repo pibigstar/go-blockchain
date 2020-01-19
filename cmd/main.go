@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-blockchain/src/core"
+	"go-blockchain/core"
 )
 
 func main() {

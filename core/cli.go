@@ -83,7 +83,7 @@ func (cli *Client) Run() {
 	createBlockchainCmd := flag.NewFlagSet("create", flag.ExitOnError)
 	sendCmd := flag.NewFlagSet("send", flag.ExitOnError)
 	printChainCmd := flag.NewFlagSet("list", flag.ExitOnError)
-	helpCmd := flag.NewFlagSet("help",flag.ExitOnError)
+	helpCmd := flag.NewFlagSet("help", flag.ExitOnError)
 
 	getBalanceAddress := getBalanceCmd.String("address", "", "The address to get balance for")
 	createBlockchainAddress := createBlockchainCmd.String("address", "", "The address to send genesis block reward to")
@@ -151,7 +151,7 @@ func (cli *Client) Run() {
 		cli.send(*sendFrom, *sendTo, *sendAmount)
 	}
 
-	if helpCmd.Parsed(){
+	if helpCmd.Parsed() {
 		cli.printUsage()
 		os.Exit(1)
 	}

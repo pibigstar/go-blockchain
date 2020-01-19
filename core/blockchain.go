@@ -3,9 +3,10 @@ package core
 import (
 	"encoding/hex"
 	"fmt"
-	"github.com/boltdb/bolt"
 	"log"
 	"os"
+
+	"github.com/boltdb/bolt"
 )
 
 const (
