@@ -4,7 +4,7 @@
 
 进入到cmd文件夹下
 ```
-cd go-blockchain/src/cmd
+cd go-blockchain/cmd
 ```
 
 创建一个新的区块链
